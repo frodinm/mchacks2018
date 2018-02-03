@@ -1,12 +1,25 @@
-.main {
+.body {
   background-color: #F0F0F0;
 }
 .navbar {
   display: flex;
+  background-color: #E85F5F
 }
 .navbar__title {
   width: 100%;
+  color: white;
+  padding: 20px;
 }
 .navbar__tabs {
   width: 100px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+}
+.navbar__tabs:hover {
+  background-color: #AD3636
+}
+.compare-box {
+  background-color: white;
 }
