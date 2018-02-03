@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {getTopNewsHeadlines} from '../api'
+import {NavigationBar} from '../components';
 
 export class NewsScreen extends Component {
     componentDidMount(){
@@ -11,13 +11,9 @@ export class NewsScreen extends Component {
     }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="main">
+        <NavigationBar />
+        
       </div>
     );
   }
