@@ -6,7 +6,7 @@
 'use strict';
 
 // set data here, could use environmental variables to simplify this step -- begin
-const NINATOKEN = "team-raozuvfqvp-mghk"; // set the bots auth token to constant
+const NINATOKEN = "team-ijupdaqzxc-mghk"; // set the bots auth token to constant
 const BOTTOKEN = "YjZhOTRiMmUtZjE1MS00ZmQ3LWE3OGEtMGQyNjM0NWViOWIzZjY1NmE1NjYtNjA5"; // set the bots auth token to constant
 const SERVER = "https://aac4640a.ngrok.io"; // the url to your webhook receiving server
 // set data here, could use environmental variables to simplify this step -- end
@@ -52,7 +52,7 @@ function initBot ( )
 	sparkBot.people.get( 'me' ).then( ( r ) => {
 		console.log( 'test', r );
 		sparkBotID = r.id;
-		main( );
+		//main( );
 		resolve( r ); // resolves
 	} ).catch( ( e ) => {
 		reject( e ); // rejects on failed information received
@@ -69,9 +69,6 @@ function stopBot ( )
 
 function main ( )
 {
-	//trainNina();
-	//return 1;
-
 	webApp.post( '/spark', ( request, response ) => { // when a bot receives a message, do this
 
 	console.log( request.body );

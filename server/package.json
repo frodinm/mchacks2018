@@ -11,11 +11,13 @@
 		"elizabot": "0.0.2",
 		"got": "8.0.3",
 		"pinkie-promise": "2.0.1",
-		"cheerio": "1.0.0-rc.2"
+		"cheerio": "1.0.0-rc.2",
+		"axios": "0.17.1"
 	},
 	"devDependencies": {},
 	"scripts": {
 		"start": "node server.js",
+		"clear": "node clear.js",
 		"test": "node server.js"
 	},
 	"repository": {
