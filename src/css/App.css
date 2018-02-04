@@ -1,0 +1,36 @@
+.fab-button{
+    position: fixed;
+    bottom:50px;
+    right:50px;
+    cursor: pointer;
+}
+
+.fab-button img{
+    height:70px;
+    width:70px;
+}
+
+#myWidget{
+    position: fixed;
+    bottom:150px;
+    right:20px; 
+    opacity: 0;
+}
+.triangle{
+    position: fixed;
+    background-color: white;
+    bottom:112px;
+    right:50px; 
+    height:40px;
+    width:40px;
+}
+
+#triangle {
+    position: fixed;
+    transform: rotate(180deg);
+    width: 200px;
+    height:150px;
+    bottom:89px;
+    right:5px;  
+    opacity: 0;
+}
