@@ -3,14 +3,19 @@ import { Modal, Button } from 'antd';
 import { SearchBar } from './index';
 
 export class AddCryptoButton extends Component {
-
+    constructor(props){
+        super(props)
+        this.state = {
+            data: []
+        }
+    }
     state = { 
         visible: false
-     }
+    }
     showModal = () => {
         if(this.props.currentCount < 4){
             this.setState({
-                visible: true,
+                visible: true
             });
         }else{
             alert('The max number of coin is 4')
@@ -57,10 +62,30 @@ export class AddCryptoButton extends Component {
         this.handleCancel()
     }
 
-    render(){
+    handleSearch(text){
 
-        var cryptoNameList = this.props.cryptoNameList
-        console.log(this.state)
+        var {cryptoNameList} = this.props
+        var tempArray = []
+
+        for(var i in cryptoNameList){
+            var x = cryptoNameList[i]
+            if(x.toLowerCase().indexOf(text.toLowerCase()) !== -1){
+                tempArray.push(x)
+            }
+        }
+
+        this.setState({
+            data: tempArray
+        })
+    }
+
+    componentDidMount() {
+        this.handleSearch('')
+    }
+
+    render(){
+        let {data} = this.state
+        let {cryptoNameList} = this.props
 
         return(
             <div className="add-crypto-button">
@@ -74,14 +99,14 @@ export class AddCryptoButton extends Component {
                 >
                     <div className ="crypto-list">
                     <div className = "search-bar">
-                        <SearchBar />
+                        <SearchBar handleSearch ={this.handleSearch.bind(this)}/>
                     </div>
                         
                     {
-                        cryptoNameList.map((x, key) => {
+                        data.map((x, key) => {
                             return(
                                 <div className = "crypto-list__button" 
-                                onClick = {() => this.handleCryptoButton(x,key)} 
+                                onClick = {() => this.handleCryptoButton(x,cryptoNameList.indexOf(x))} 
                                 key = {key}>
                                     {x}
                                 </div>

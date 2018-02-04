@@ -5,10 +5,12 @@ const Search = Input.Search;
 export class SearchBar extends Component {
 
     render() {
+        let {handleSearch} = this.props
+
         return (
             <Search
             placeholder="input search text"
-            onSearch={value => console.log(value)}
+            onChange={e => handleSearch(e.target.value)}
             style={{ width: 200 }}
           />
         );

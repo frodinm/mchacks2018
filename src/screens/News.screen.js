@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {NavigationBar,NewsCard,ChatBotComponent} from '../components';
-import { getTopNewsHeadlines,getEverythingNewsHeadlines } from '../api'
+import { getEverythingNewsHeadlines } from '../api'
 
 import '../css/newscss.css'
 

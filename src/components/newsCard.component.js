@@ -6,7 +6,7 @@ export class NewsCard extends Component {
     const {currentItem} = this.props;
     return (
         <div className="news-card" onClick={()=>{window.open(currentItem.url,"_blank")}} >
-         <img className="news-image" src={currentItem.urlToImage}/>
+         <img alt={currentItem.name} className="news-image" src={currentItem.urlToImage}/>
          <div className="text-wrapper">
           <span className="news-title">{currentItem.title}</span>
          </div>

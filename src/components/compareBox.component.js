@@ -6,10 +6,10 @@ var headers = ['LOGO','NAME','ALGORITHM','PROOFTYPE','SYMBOL','RANK','PRICE(USD)
 '1H CHANGE','24H CHANGE','7D CHANGE','24H VOLUME','MARKET CAP(USD)',
 'AVAILABLE SUPPLY','TOTAL SUPPLY','MAX SUPPLY','LAST UPDATE']
 
-var categories = ['name','symbol','rank','price_usd','price_btc'
-,'24h_volume_usd','market_cap_usd','available_supply',
-'total_supply','max_supply','percent_change_1h','percent_change_24h',
-'percent_change_7d','last_updated']
+// var categories = ['name','symbol','rank','price_usd','price_btc'
+// ,'24h_volume_usd','market_cap_usd','available_supply',
+// 'total_supply','max_supply','percent_change_1h','percent_change_24h',
+// 'percent_change_7d','last_updated']
 
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
@@ -27,14 +27,7 @@ function timeConverter(UNIX_timestamp){
 export class CompareBox extends Component {
 
     render(){
-
-        var currentCrypto = this.props.currentCrypto
-        var data = this.props.data
-        var handleAdd = this.props.handleAdd
-        var cryptoNameList = this.props.cryptoNameList
-        var currentCount = this.props.currentCount
-        var cryptoCompareData = this.props.cryptoCompareData
-        var removeCrypto = this.props.removeCrypto
+        var {currentCrypto, data, handleAdd, cryptoNameList, currentCount, cryptoCompareData, removeCrypto} = this.props
 
         return(
             <div className="compare-box-wrapper">
@@ -62,11 +55,11 @@ export class CompareBox extends Component {
                                     <div>
                                         {
                                             (symbol !== 'MIOTA')
-                                            ?(<img src={"https://www.cryptocompare.com"+cryptoCompareData[symbol].ImageUrl}/>)
-                                            :(<img src={"https://www.cryptocompare.com"+cryptoCompareData['IOT'].ImageUrl}/>)
+                                            ?(<img alt = {x.name} src={"https://www.cryptocompare.com"+cryptoCompareData[symbol].ImageUrl}/>)
+                                            :(<img alt = "Iota" src={"https://www.cryptocompare.com"+cryptoCompareData['IOT'].ImageUrl}/>)
                                         }
                                         <span onClick={() => removeCrypto(x.name)}>
-                                            <img src="https://image.flaticon.com/icons/png/128/148/148766.png"/>
+                                            <img alt={x.name} src="https://image.flaticon.com/icons/png/128/148/148766.png"/>
                                         </span>
                                     </div>
                                     <div>{crypto.name}</div>

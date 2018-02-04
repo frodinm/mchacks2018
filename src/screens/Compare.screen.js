@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CompareBox, NavigationBar, SearchBar, AddCryptoButton} from '../components';
+import {CompareBox, NavigationBar} from '../components';
 import axios from 'axios';
 import '../css/compare.css';
 
@@ -68,8 +68,9 @@ export class CompareScreen extends Component {
       currentCrypto: this.state.currentCrypto.concat(
         [{name:cryptoName,k:key}])
     })
+    var tempCount = this.state.currentCount
     this.setState({
-      currentCount: ++this.state.currentCount
+      currentCount: ++tempCount
     })
   }
 
@@ -79,18 +80,17 @@ export class CompareScreen extends Component {
       if(currentCrypto[i].name === name){
         this.state.currentCrypto.splice(i,1)
         this.forceUpdate()
+        var tempCount = this.state.currentCount
         this.setState({
-          currentCount: --this.state.currentCount
+          currentCount: --tempCount
         })
       }
     }
   } 
 
   render() {
-    var cryptoNameList = this.state.cryptoNameList
+    var {cryptoNameList} = this.state
 
-
-    console.log(this.state)
     return (
       <div className="main">
         <NavigationBar />
