@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import {NavigationBar} from '../components';
-import { getTopNewsHeadlines } from '../api'
-import { Card } from 'antd';
+import {NavigationBar,NewsCard,ChatBotComponent} from '../components';
+import { getTopNewsHeadlines,getEverythingNewsHeadlines } from '../api'
+
+import '../css/newscss.css'
 
 export class NewsScreen extends Component {
     constructor(){
         super();
         this.state={
-            topNewsStories: {},
+            topNewsStories: [],
             error: null
         }
     }
     componentDidMount(){
-        getTopNewsHeadlines().then((res)=>{
+        
+        getEverythingNewsHeadlines().then((res)=>{
             this.setState({
                 topNewsStories: res.data.articles
             })
@@ -25,18 +27,24 @@ export class NewsScreen extends Component {
     }
 
     handleNewsCard(){
-
+        const {topNewsStories} = this.state;
+        return topNewsStories.map((current,index)=>{
+            return(
+                <div key={index} className="news-card-wrapper">
+                    <NewsCard currentItem={current}/>
+                </div>
+            )
+        })
     }
 
   render() {
     return (
-      <div className="main">
+      <div style={{backgroundColor:'#F0F0F0'}}>
         <NavigationBar />
-        <Card title="Card title" extra={<a href="#">More</a>} style={{ width: 300 }}>
-            <p>Card content</p>
-            <p>Card content</p>
-            <p>Card content</p>
-        </Card>
+        <div  className="news-wrapper">
+            {this.handleNewsCard()}
+        </div>
+        <ChatBotComponent/>
       </div>
     );
   }

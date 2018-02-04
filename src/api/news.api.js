@@ -10,3 +10,12 @@ export const getTopNewsHeadlines = () =>{
         url: `/top-headlines?sources=crypto-coins-news&apiKey=${apiKey}`
     })
 }
+
+export const getEverythingNewsHeadlines = () =>{
+    return axios.request({
+        method:"get",
+        baseURL:baseURL,
+        url: `/everything?sources=crypto-coins-news&apiKey=${apiKey}`
+    })
+}
+

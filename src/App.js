@@ -5,7 +5,7 @@ import {
   Route
 } from 'react-router-dom'
 import {CompareScreen,NewsScreen} from './screens/'
-import './App.css';
+import './css/App.css';
 import 'antd/dist/antd.css';
 
 class App extends Component {
