@@ -48,8 +48,7 @@ export class AddCryptoButton extends Component {
     }
 
     handleCryptoButton(x,key){
-        var handleAdd = this.props.handleAdd  
-        var currentCrypto = this.props.currentCrypto
+        var {handleAdd, currentCrypto} = this.props 
         this.checkIfExist(currentCrypto, x).then(
             (exist) => {
                 if(!exist){
