@@ -118,6 +118,9 @@
     height: 70vh;
     overflow-y: scroll;
   }
+  .ant-modal-body {
+    min-height: 55vh;
+  }
   .ant-modal {
     max-width: 800px;
     padding: 0;
