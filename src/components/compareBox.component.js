@@ -46,25 +46,40 @@ export class CompareBox extends Component {
                             var index = x.k
                             var crypto = data[index]
                             var symbol = data[index].symbol
+
                             if(symbol === 'MIOTA'){
                                 symbol = 'IOT'
                             }
-                            console.log(cryptoCompareData)
+                            var image = ""
+                            if(cryptoCompareData[symbol] !== undefined){
+                                if(cryptoCompareData[symbol].hasOwnProperty('ImageUrl')){
+                                    image = <img alt = {x.name} src={"https://www.cryptocompare.com"+cryptoCompareData[symbol].ImageUrl}/>
+                                }else if(symbol === 'MIOTA'){
+                                    image = <img alt = "Iota" src={"https://www.cryptocompare.com"+cryptoCompareData['IOT'].ImageUrl}/>
+                                }
+                            }
+
+                            var algoBody;
+                            var proofTypeBody;
+                            if(cryptoCompareData[symbol] !== undefined){
+                                algoBody = <div>{cryptoCompareData[symbol].Algorithm}</div> 
+                                proofTypeBody = <div>{cryptoCompareData[symbol].ProofType}</div>         
+                            }else{
+                                algoBody = <div>?</div>
+                                proofTypeBody = <div>?</div>
+                            }
+
                             return(
                                 <div className="crypto-category-wrapper">
                                     <div>
-                                        {
-                                            (symbol !== 'MIOTA')
-                                            ?(<img alt = {x.name} src={"https://www.cryptocompare.com"+cryptoCompareData[symbol].ImageUrl}/>)
-                                            :(<img alt = "Iota" src={"https://www.cryptocompare.com"+cryptoCompareData['IOT'].ImageUrl}/>)
-                                        }
+                                        {image}
                                         <span onClick={() => removeCrypto(x.name)}>
                                             <img alt={x.name} src="https://image.flaticon.com/icons/png/128/148/148766.png"/>
                                         </span>
                                     </div>
                                     <div>{crypto.name}</div>
-                                    <div>{cryptoCompareData[symbol].Algorithm}</div>
-                                    <div>{cryptoCompareData[symbol].ProofType}</div>
+                                    {algoBody}
+                                    {proofTypeBody}
                                     <div>{crypto.symbol}</div>
                                     <div>{crypto.rank}</div>
                                     <div>{numeral(crypto.price_usd).format('$0,0.00')}</div>
