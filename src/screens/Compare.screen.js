@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {CompareBox, NavigationBar} from '../components';
+import {CompareBox, NavigationBar,ChatBotComponent} from '../components';
 import axios from 'axios';
 import '../css/compare.css';
 
@@ -104,6 +104,7 @@ export class CompareScreen extends Component {
             cryptoCompareData = {this.state.cryptoCompareData}
             removeCrypto = {this.removeCrypto.bind(this)}/>
         </div>
+        <ChatBotComponent/>
       </div>
     );
   }
